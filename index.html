@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="css/css.css">
+    <link rel="icon" type="image/x-icon" href="img/logo3.PNG">
+    <style>
+        /* Estilo básico para o vídeo e controles */
+        #video-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        video {
+            width: 710px; /* Defina o tamanho do vídeo conforme necessário */
+            height: 400px;
+            border: 3px solid #fff;
+            border-radius: 8px;
+            margin-left: 4.5%;
+        }
+
+        .controls {
+            margin-top: 10px;
+            margin-left: 8%;
+        }
+
+        .control-button {
+            padding: 10px;
+            background-color: #333;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin: 5px;
+            border-radius: 5px;
+        }
+
+        .control-button:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body background="img/background3.jpg">
+    
+    <header>
+        <img id="foto1" src="img/logo3.PNG">
+
+        <div id="linha">
+            
+            <div class="dropdown">
+                <button class="dropbtn">
+                    <img src="img/menu.png" alt="Menu" class="menu-icon"> 
+                </button>
+                <div class="dropdown-content">
+                    <a href="contato.html">Contato</a>
+                    <a href="anexo.html">Anexos</a>
+                    <a href="login.html">Sair</a>
+                </div>
+            </div>
+
+            <h1 id="titLINHA"><i>Nome da Empresa</i></h1>
+
+        </div>
+    </header>
+    
+    <hr id="linhaTOPO">
+    
+    <main>
+        
+        <article>
+            <h1 id="titulo"><i>Informações</i></h1>
+        </article>
+        
+        <aside>
+            <h1 id="titulo"><i>Informações</i></h1>
+        </aside>
+        
+    </main>
+    
+    <br>
+    <hr id="linhaTOPO">
+    
+    <div id="secao2">
+        <div id="video-container">
+            <video id="myVideo" autoplay loop muted>
+                <source src="video/video.mp4" type="video/mp4">
+                Seu navegador não suporta a tag de vídeo.
+            </video>
+
+            <div class="controls">
+                <button class="control-button" onclick="toggleMute()">Mutar/Desmutar</button>
+                <button class="control-button" onclick="adjustVolume(-0.1)">Diminuir Volume</button>
+                <button class="control-button" onclick="adjustVolume(0.1)">Aumentar Volume</button>
+            </div>
+        </div>
+    </div>
+    
+    <hr id="linhaTOPO">
+    
+    <footer>
+        <p id="copyright"><i>Copyright - Gustavo M.M</i></p>
+    </footer>
+
+    <script>
+        
+        function toggleMute() {
+            const video = document.getElementById('myVideo');
+            video.muted = !video.muted;
+        }
+
+        
+        function adjustVolume(change) {
+            const video = document.getElementById('myVideo');
+            let newVolume = video.volume + change;
+            
+            if (newVolume >= 0 && newVolume <= 1) {
+                video.volume = newVolume;
+            }
+        }
+    </script>
+
+</body>
+</html>

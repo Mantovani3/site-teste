@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Anexar Arquivos</title>
+    <style>
+        header {
+            background-color: rgba(68, 68, 68, 0.986);
+            display: flex;
+            padding: 16px;
+            border-radius: 14px;
+            width: 650px;
+            margin-left: 28%;
+            margin-top: 2%;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        h2 {
+            border: none;
+            font-size: 18px;
+            border-radius: 4px;
+            color: white;
+            padding: 12px;
+            margin-left: 10%;
+            margin-right: 15%;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        #titulo {
+            background-color: rgb(255, 163, 82);
+            color: white;
+            font-family: Arial, Helvetica, sans-serif;
+            padding: 12px;
+            width: auto;
+            text-align: center;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        #secao2 {
+            width: 780px;
+            height: 500px;
+            background-color: rgba(68, 68, 68, 0.986);
+            margin-left: 5%;
+            display: flex;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .tabela {
+            width: 700px;
+            margin-top: 20px;
+            border-collapse: collapse;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .tabela, .tabela th, .tabela td {
+            border: 1px solid #fff;
+        }
+
+        .tabela th, .tabela td {
+            padding: 8px;
+            text-align: center;
+            color: white;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .tabela th {
+            background-color: rgb(255, 163, 82);
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .tabela tr:nth-child(even) {
+            background-color: #555;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        
+
+        #copyright {
+            color: white;
+            font-size: 14px;
+            font-style: italic;
+            margin: 0;
+            margin-top: 1.5%;
+        }
+
+        .download-btn {
+            background-color: rgb(255, 163, 82);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .download-btn:hover {
+            background-color: rgba(255, 163, 82, 0.7);
+        }
+
+        #button{
+            background-color: rgb(255, 163, 82);
+        }
+    </style>
+</head>
+<body background="img/background3.jpg">
+    <header>
+        <h2>Área de Anexos</h2>
+    </header>
+
+    <main>
+        <section id="secao2">
+            <div>
+                <h2 id="titulo">Documentação</h2>
+                <form id="uploadDoc" enctype="multipart/form-data">
+                    <input type="file" id="fileDoc" name="fileDoc" multiple>
+                    <button type="submit">Anexar Documentos</button>
+                </form>
+                <table class="tabela" id="tabelaDoc">
+                    <thead>
+                        <tr>
+                            <th>Nome do Arquivo</th>
+                            <th>Data de Upload</th>
+                            <th>Ação</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Arquivos enviados aparecerão aqui -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div>
+                <h2 id="titulo">Projetos</h2>
+                <form id="uploadProj" enctype="multipart/form-data">
+                    <input type="file" id="fileProj" name="fileProj" multiple>
+                    <button type="submit">Anexar Projetos</button>
+                </form>
+                <table class="tabela" id="tabelaProj">
+                    <thead>
+                        <tr>
+                            <th>Nome do Arquivo</th>
+                            <th>Data de Upload</th>
+                            <th>Ação</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Arquivos enviados aparecerão aqui -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    
+
+    <script>
+        // Função para carregar os dados salvos no localStorage
+        function carregarArquivos() {
+            const documentos = JSON.parse(localStorage.getItem('documentos')) || [];
+            const projetos = JSON.parse(localStorage.getItem('projetos')) || [];
+
+            // Carregar os arquivos na tabela "Documentação"
+            documentos.forEach(doc => {
+                adicionarNaTabela('#tabelaDoc tbody', doc.nome, doc.data);
+            });
+
+            // Carregar os arquivos na tabela "Projetos"
+            projetos.forEach(projeto => {
+                adicionarNaTabela('#tabelaProj tbody', projeto.nome, projeto.data);
+            });
+        }
+
+        // Função para adicionar um arquivo na tabela
+        function adicionarNaTabela(tabelaId, nome, data) {
+            const tabela = document.querySelector(tabelaId);
+            const row = tabela.insertRow();
+            const cell1 = row.insertCell(0);
+            const cell2 = row.insertCell(1);
+            const cell3 = row.insertCell(2);
+
+            cell1.textContent = nome;
+            cell2.textContent = data;
+
+            const downloadLink = document.createElement('a');
+            downloadLink.href = "#"; // Não tem arquivo real, apenas para exibição
+            downloadLink.textContent = 'Baixar';
+            downloadLink.classList.add('download-btn');
+            cell3.appendChild(downloadLink);
+        }
+
+        // Função para adicionar arquivos e salvar no localStorage
+        function adicionarArquivo(tabelaId, inputId, tipo) {
+            const tabela = document.querySelector(tabelaId);
+            const input = document.querySelector(inputId);
+            const files = input.files;
+            const arquivos = JSON.parse(localStorage.getItem(tipo)) || [];
+
+            if (files.length > 0) {
+                for (let i = 0; i < files.length; i++) {
+                    const fileName = files[i].name;
+                    const uploadDate = new Date().toLocaleString();
+
+                    // Adiciona o arquivo na tabela
+                    adicionarNaTabela(tabelaId, fileName, uploadDate);
+
+                    // Salva o arquivo no localStorage
+                    arquivos.push({ nome: fileName, data: uploadDate });
+                }
+
+                // Salva no localStorage para persistir os dados
+                localStorage.setItem(tipo, JSON.stringify(arquivos));
+            }
+        }
+
+        // Capturando os eventos de envio de formulário
+        document.getElementById('uploadDoc').addEventListener('submit', function(event) {
+            event.preventDefault();
+            adicionarArquivo('#tabelaDoc tbody', '#fileDoc', 'documentos');
+            document.getElementById('uploadDoc').reset();
+        });
+
+        document.getElementById('uploadProj').addEventListener('submit', function(event) {
+            event.preventDefault();
+            adicionarArquivo('#tabelaProj tbody', '#fileProj', 'projetos');
+            document.getElementById('uploadProj').reset();
+        });
+
+        // Carregar os arquivos quando a página for carregada
+        window.onload = function() {
+            carregarArquivos();
+        };
+    </script>
+</body>
+</html>
