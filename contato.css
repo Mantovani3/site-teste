@@ -1,0 +1,70 @@
+#telaCONTATO{
+    background-color: rgba(68, 68, 68, 0.986);
+    border: white 2px solid;
+    border-radius: 8px;
+    width: 650px;
+    height: 650px;
+    margin-left: 30%;
+}
+
+#fotoCONTATO{
+    margin-left: 43%;
+    margin-top: 5%;
+}
+
+p{
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    font-size: 20px;
+    padding: 16px;
+    background-color: rgb(255, 163, 82);
+    width: 565px;
+    text-align: justify;
+    margin-left: 4.5%;
+}
+
+#linhaZAP{
+    display: flex;
+    margin-left: 24%;
+}
+
+#linhaEMAIL{
+    display: flex;
+    margin-left: 24%;
+}
+
+#zap{
+    background-color: transparent;
+    border: none;
+}
+
+#email{
+    background-color: transparent;
+    border: none;
+}
+
+#fotoZAP{
+        background-color: white;
+        border-radius: 8px;
+        padding: 8px;
+}
+
+#fotoEMAIL{
+    background-color: white;
+    border-radius: 8px;
+    padding: 8px;
+}
+
+button{
+    background-color: rgb(255, 163, 82);
+    border: white 2px solid;
+    border-radius: 6px;
+    padding: 10px;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 22px;
+    margin-left: 41.5%;
+    margin-top: 5%;
+    width: 125px;
+}
+

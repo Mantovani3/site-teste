@@ -1,0 +1,173 @@
+#login-block {
+    background-color: rgb(39, 38, 38);
+    width: 450px;
+    height: 550px;
+    border-radius: 10px;
+    padding: 12px;
+    margin-left: 35%;
+    margin-top: 9%;
+    box-shadow: 0px 8px 16px rgba(2.5, 2.5, 2.5, 2.5);
+}
+
+main {
+    display: flex;
+}
+
+#mensagem {
+    color: white;
+    font-size: 55px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: bold, italic;
+    margin-left: 15%;
+    margin-top: 17%;
+}
+
+hr {
+    background-color: rgb(255, 163, 82);
+    height: 20px;
+    border: none;
+    border-radius: 8px;
+    margin-bottom: 5%;
+}
+
+#login-block h2 {
+    color: white;
+    font-size: 22px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: italic;
+    margin-left: 32%;
+}
+
+#login-block hr {
+    background-color: rgb(255, 163, 82);
+    height: 10px;
+}
+
+#login-block label {
+    background-color: rgb(255, 163, 82);
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    border: none;
+    border-radius: 4px;
+    padding: 12px;
+}
+
+#login-block input {
+    border-radius: 4px;
+    font-size: 18px;
+    padding: 8px;
+    border: none;
+}
+
+#login-block form {
+    margin-left: 25%;
+}
+
+#login-block button {
+    background-color: rgb(255, 163, 82);
+    color: white;
+    font-style: italic;
+    width: 240px;
+    padding: 8px;
+    font-size: 18px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+/* Animação de pulso */
+@keyframes pulso {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 rgba(255, 163, 82, 0.7);
+    }
+    50% {
+        transform: scale(1.1);
+        box-shadow: 0 0 15px rgba(255, 163, 82, 0.7);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 rgba(255, 163, 82, 0.7);
+    }
+}
+
+#login-btn {
+    animation: pulso 1s ease-out;
+}
+
+#login-btn:hover {
+    animation: pulso 1s ease-out;
+}
+
+#login-btn:focus {
+    outline: none;
+    animation: pulso 1s ease-out;
+}
+
+#crie{
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+a{
+    color: rgb(255, 163, 82);
+    text-decoration: none;
+}
+
+
+.modal {
+    display: none; 
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4); 
+    justify-content: center;
+    align-items: center;
+    opacity: 0; 
+    animation: fadeIn 0.5s forwards; 
+}
+
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.modal-content {
+    background-color: rgb(39, 38, 38);
+    margin: 15% auto;
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+    text-align: center;
+    color: white;
+    position: relative; 
+    font-family: Arial, Helvetica, sans-serif;
+    border: white 2px solid;
+}
+
+.close {
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 10px; 
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: rgb(255, 163, 82);
+    text-decoration: none;
+}
